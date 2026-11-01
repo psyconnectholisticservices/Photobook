@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photobook</title>
+
+  <!-- DearFlip Theme & Font Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dearhive/dearflip-js-flipbook@master/dflip/css/dflip.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/dearhive/dearflip-js-flipbook@master/dflip/css/themify-icons.min.css" />
+
+  <style>
+    /* Full-screen viewport reset */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #1a1a1a;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    #flipbook-container {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* Optional branding touch: clean dark loading background */
+    ._df_book {
+      background: #181818 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flipbook container element pointing to your PDF file -->
+  <div id="flipbook-container" class="_df_book" source="photobook.pdf"></div>
+
+  <!-- jQuery & DearFlip Core JS (Delivered via CDN) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/dearhive/dearflip-js-flipbook@master/dflip/js/dflip.min.js"></script>
+
+  <script>
+    // Global DearFlip Configuration for 67-page Photobook
+    var dFlipLocation = "https://cdn.jsdelivr.net/gh/dearhive/dearflip-js-flipbook@master/dflip/";
+
+    var dFlipOptions = {
+      source: "photobook.pdf",      // Ensure your PDF filename matches exactly
+      webgl: true,                  // 3D realistic page-turn physics (falls back to 2D CSS automatically on older devices)
+      pageSize: 0,                  // 0 = Auto-detect page aspect ratio from PDF
+      height: "100%",
+      autoEnableOutline: false,     // Keeps view clean; hides document index sidebar by default
+      autoEnableThumbnail: false,   // Keeps view focused on photobook spreads
+      enableDownload: false,        // Set to true if you want viewers to download the raw PDF
+      enablePrint: false,           // Set to true if printing is needed
+      soundEnable: true,            // Realistic paper flip audio
+      backgroundColor: "#1a1a1a",   // Clean neutral backdrop
+      duration: 800,                // Flip animation speed (ms)
+      zoomRatio: 1.5                // Zoom scale when double-tapping/clicking
+    };
+
+    $(document).ready(function () {
+      $("#flipbook-container").dFlip(dFlipOptions);
+    });
+  </script>
+</body>
+</html>
